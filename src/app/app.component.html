@@ -1,0 +1,880 @@
+<style>
+  :root{
+      --color-one : #1e1950;
+      --color-two :#F3F1FF;
+      --color-three : #FF6B2C;
+      --color-four : #24B0D3;
+      --color-five : #FFD701;
+      --color-six : #7521FF;
+      --color-seven : #4CD7FF;
+      --color-eight : #2C00D5;
+      --color-nine : #F2CFEF;
+  }
+  .nav__bar{
+    position: fixed;
+    width: 100%;
+    height: 15vh;
+    background-color: #fff;
+    z-index: 10;
+  }
+  .right-nav{
+    margin-right: 4.8rem;
+  }
+  .nav-link{
+    font-size: 1.4rem;
+    color: var(--color-one);
+    text-decoration: none;
+    display: inline-block;
+  }
+  .body{
+    padding-top: 10vh;
+  }
+  .header{
+      background-color: var(--color-two);
+  }
+  .primary-heading{
+      font-size: 6.4rem;
+      color: var(--color-one);
+  }
+  .primary-heading span{
+      font-size: 7.2rem;
+      border-bottom: 0.5rem solid var(--color-three);
+  }
+  .description{
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 1.5;
+  }
+  .des--update{
+      text-align: center;
+      line-height: 1.5;
+  }
+  .header-img{
+      width: 100%;
+      align-self: center;
+      justify-self: center;
+  }
+  .search{
+      background-color: #fff;
+      border-radius: 1rem;
+      position: relative;
+      z-index: 8;
+  }
+  .search-result{
+      position: absolute;
+      top: 105%;
+      left: 0;
+      height: 50vh;
+      width: 100%;
+      overflow: scroll;
+      overflow-x: hidden;
+      padding: 1.6rem;
+      background-color: var(--color-nine);
+      border-radius: 0.5rem;
+  }
+  .input{
+      width: 100%;
+      font-size: 1.6rem;
+  }
+  .input::placeholder{
+      color: #000;
+  }
+  .input:focus,.searchBtn:focus{
+      border: none;
+      outline: 0.3rem solid var(--color-three);
+  }
+  .input,.searchBtn{
+      padding: 1.6rem;
+      border-radius: 0.5rem;
+      border: none;
+      background-color: var(--color-nine);
+  }
+  .searchBtn{
+      background-color: var(--color-three);
+      padding: 1.6rem 3.2rem;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.4rem;
+      text-align: center;
+      cursor: pointer;
+  }
+  .opacityAndIndex{
+      opacity: 0;
+      z-index: -1;
+  }
+  .imp-points{
+      grid-column: 1/3;
+  }
+  .list li{
+      background-color: #FF6B2C;
+      padding: 0.5rem 1rem;
+      font-size: 1.4rem;
+      color: #fff;
+      list-style: none;
+      border-radius: 0.5rem;
+      outline: 0.5rem solid #ff6b2c97;
+  }
+  .image{
+      position: relative;
+  }
+  .text-design-extra{
+      position: absolute;
+      width: 30rem;
+      height: 10rem;
+      background-color: var(--color-six);
+      background-image: linear-gradient(to left bottom, var(--color-six), var(--color-eight));
+      top: -10%;
+      left: -10%;
+      border-radius: 1rem;
+  }
+  .text-design-extra--{
+      position: absolute;
+      width: 30rem;
+      height: 10rem;
+      background-color: var(--color-six);
+      background-image: linear-gradient(to left bottom, var(--color-five), var(--color-three));
+      bottom: -10%;
+      right: -10%;
+      border-radius: 1rem;
+  }
+  .text-des{
+      font-size: 2.4rem;
+      color: #fff;
+  }
+  .text-design-extra {
+      background-image: linear-gradient(-45deg, var(--color-five), var(--color-six), var(--color-seven), var(--color-eight));
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+  }
+  .itt {
+      background-image: linear-gradient(-45deg, var(--color-five), var(--color-six), var(--color-seven), var(--color-eight));
+      -webkit-background-clip: text;
+      color: transparent;
+      background-size: 400% 400%;
+      animation: gradient 2s ease infinite;
+  }
+  .text-design-extra-- {
+      background: linear-gradient(-45deg, var(--color-one), var(--color-two), var(--color-three), var(--color-four));
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+  
+  .cover{
+      height: 100vh;
+      background-color: #fff;
+      width: 100%;
+  }
+  .searchOut{
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      font-size: 1.4rem;
+      color: #000;
+  }
+  .body{
+      position: relative;
+  }
+  .overlay{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #00000098;
+      z-index: 3;
+  }
+  .fixingPosition{
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      margin: 1.6rem;
+      z-index: 100;
+  }
+  .bottom{
+    grid-column: 1/3;
+  }
+  .right{
+    text-align: center;
+    margin: 0 auto;
+  }
+  .img{
+    width: 80%;
+
+  }
+  .aboutus-container {
+    padding-right: 0 !important;
+    row-gap: 2.4rem;
+  }
+  .secondary-heading,.tertiary-heading{
+    font-size: 4.8rem;
+    color: var(--color-one);
+  }
+  .tertiary-heading{
+    font-size: 2.4rem;
+  }
+  .des,.heading-description,.offering-feature-des{
+    color: var(--color-one);
+    font-size: 1.4rem;
+    font-weight: 300 !important;
+    line-height: 1.5;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .bottom{
+    padding-right: 9.6rem;
+  }
+  .features-section{
+    padding-top: 0 !important;
+  }
+  .slight__update{
+    font-size: 3.2rem;
+  }
+  .slight__update__second{
+    font-size: 2.8rem;
+  }
+  .third__update{
+    text-align: end;
+  }
+  .img--{
+    width: 12.6rem;
+  }
+  .img__date{
+    width: 12.6rem;
+    height: 12.6rem;
+  }
+  .outer{
+    max-width: 140vh;
+    margin: 0 auto;
+  }
+  .openings{
+    padding-top: 0;
+  }
+  .opening-details{
+    box-shadow: 0 0 0.5rem #000;
+    border-radius: 0.5rem;
+  }
+  .need,.contact{
+    font-size: 1.4rem;
+  }
+  .contact{
+    grid-column: 1/3;
+    
+  }
+  .contact span{
+    background-color: var(--color-four);
+    padding: 0.5rem 1rem;
+    border-radius: 10rem;
+    color: #fff;
+  }
+  .form-contact {
+    padding-top: 0;
+  }
+  .contact-form{
+    max-width: 100vh;
+    margin: 0 auto;
+  }
+  .label{
+    font-size: 1.6rem;
+  }
+  .input{
+    width: 100vh;
+    background: none;
+    border: 0.1rem solid #1e1950;
+  }
+  .submit{
+    border: none;
+    padding: 1.6rem;
+    background-color: var(--color-one);
+    color: #fff;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+  .footer{
+    background-color: var(--color-two);
+    padding-bottom: 4.8rem;
+  }
+  .uotte{
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .logo{
+    width: 12.6rem;
+  }
+  .logo--{
+    transform: scale(1.5);
+  }
+  .fouth-heading{
+    font-size: 2.4rem;
+    color: var(--color-one);
+
+  }
+  .navigate{
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: inline-block;
+    color: var(--color-one);
+  }
+  .copyright{
+    text-align: center;
+    margin-top: 4.8rem;
+  }
+  .ourGalary{
+    padding-top: 0;
+  }
+  .gallery-container{
+    height: 130vh;
+    grid-template-rows: repeat(6,1fr);
+    padding: 0 4.8rem;
+  }
+  .one{
+    grid-column: 1/5;
+    width: 100%;
+    height: 100%;
+    background-color: #1e1950;
+    grid-row: 1/3;
+  }
+  .two{
+    grid-column: 5/8;
+    width: 100%;
+    height: 100%;
+    background-color: #4CD7FF;
+    grid-row: 1/3;
+  }
+  .three{
+    grid-column: 1/4;
+    width: 100%;
+    height: 100%;
+    background-color: #FF6B2C;
+    grid-row: 3/5;
+  }
+  .four{
+    grid-column: 4/8;
+    width: 100%;
+    height: 100%;
+    background-color: #FFD701;
+    grid-row: 3/5;
+  }
+  .five{
+    grid-column: 1/5;
+    width: 100%;
+    height: 100%;
+    background-color: #1e1950;
+    grid-row: 5/8;
+  }
+  .six{
+    grid-column: 5/8;
+    width: 100%;
+    height: 100%;
+    background-color: #24B0D3;
+    grid-row: 5/8;
+  }
+  .seven{
+    grid-column: 5/8;
+    width: 100%;
+    height: 100%;
+    background-color: #FF6B2C;
+    grid-row: 5/8;
+  }
+  .img{
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+  }
+  .img:hover{
+    outline: 1rem solid var(--color-three);
+    outline-offset: 1.6rem;
+    outline-style: dashed;
+    transform: scale(1.1);
+    box-shadow: 0 0 1rem #000;
+    z-index: 10;
+  }
+  @media (max-width: 1200px){
+    .header{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .imp-points{
+      grid-column: 1/2;
+    }
+    .primary-heading,.description{
+      text-align: center;
+    }
+    .image{
+      display: none;
+    }
+    .list{
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+    }
+    .list li{
+      text-align: center;
+    }
+    .img__aboutus{
+      width: 90%;
+    }
+}
+.nav__bar{
+  z-index: 15;
+}
+.menu{
+  cursor: pointer;
+  display: none;
+}
+.header{
+  position: relative;
+}
+.menu-bar-barlist{
+  position: absolute;
+  right: 0;
+  top: 10%;
+  padding: 3.2rem 6.4rem;
+  margin-right: 1.6rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  z-index: 10;
+}
+.right-foot{
+  grid-column: 3/5;
+}
+@media (max-width: 1061px){
+  .list li{
+    font-size: 1.2rem;
+  }
+  .img__aboutus{
+    width: 80%;
+  }
+  .des,.heading-description{
+    font-size: 1.4rem;
+  }
+  .covered{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .ourGalary{
+    padding: 0;
+    padding-bottom: 4.8rem;
+  }
+  .padd__esential{
+    padding-left: 4.8rem;
+  }
+  .foot{
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+}
+
+@media (max-width : 901px){
+  .description{
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+  .aboutus{
+ 
+    padding-right: 9.6rem;
+  }
+  .aboutus-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .right-nav {
+    display: none;
+  }
+  .menu{
+    display: block;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 780px){
+  .list{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .covered{
+    grid-template-columns: repeat(1,1fr);
+  }
+  .ourGalary{
+    display: none;
+  }
+  .form-contact{
+    padding: 0;
+    padding-bottom: 4.8rem;
+  }
+  .padding_esential{
+    padding-left: 4.8rem;
+  }
+  .footer{
+    padding: 4.8rem;
+  }
+  
+}
+
+@media (max-width:655px){
+  .offering{
+    flex-direction: column;
+  }
+  .form-contact{
+    padding-bottom: 4.8rem;
+  }
+  .foot{
+    grid-template-columns: 1fr;
+    grid: 4.8rem;
+  }
+  .primary-heading{
+    font-size: 4rem;
+  }
+  .input{
+    max-width: 70vh;
+  }
+}
+
+@media (max-width : 593px){
+  .input{
+    max-width: 60vh;
+  }
+  .aboutus,.features-section,.openings{
+    padding: 1.6rem;
+  }
+  .features-section,.openings{
+    padding-bottom: 4.8rem !important;
+  }
+  .aboutus-container{
+    padding-bottom: 4.8rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .header{
+    padding-top: 4.8rem !important;
+    padding: 1.6rem;
+  }
+}
+
+@media (max-width : 426px){
+  .list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40vh;
+  }
+  .imp-points{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .primary-heading span{
+    font-size: 4.8rem;
+  }
+  .header{
+    gap: 4.8rem;
+  }
+  .bottom{
+    padding-right: 1.6rem;
+  }
+}
+
+@media (max-width : 376px){
+  .input{
+    width: 50vh;
+  }
+  .logo----{
+    width: 9.6rem;
+    transform: translateX(-4.8rem);
+  }
+  .top-logo{
+    width: 6.4rem;
+  }
+  .top-logo-{
+    width: 9.6rem;
+  }
+  .secondary-heading{
+    font-size: 2.4rem;
+  }
+  .tertiary-heading{
+    font-size: 2rem;
+  }
+
+}
+
+@media (max-width : 321px){
+  .input{
+    width: 40vh;
+  }
+  .primary-heading{
+    font-size: 3.2rem;
+  }
+
+}
+  
+</style>
+
+<nav class="nav__bar flex flex-2" >
+<div class="left-nav">
+  <div class="coveing flex flex-align gap16">
+    <img src="./../assets/logo4.png" class="logo top-logo" alt="logo" >
+    <img src="./../assets/name4.png" class="logo logo-- top-logo-" alt="logo" >
+  </div>
+</div>
+<div class="right-nav flex flex-1 gap48">
+  <a href="#about" class="nav-link">About Us</a>
+  <a href="#offer" class="nav-link">Our Offerings</a>
+  <a href="#openning" class="nav-link">Current Openings</a>
+  <a href="#connect" class="nav-link">Get in touch</a>
+</div>
+<div class="menubar pad16">
+  <img (click)="menuOpen()" src="./../assets/menu1.png" alt="menu" class="menu">
+</div>
+
+</nav>
+<main class="body">
+  <!-- <app-autochat class="fixingPosition"></app-autochat> -->
+  <!-- <app-topnav></app-topnav> -->
+  <!-- <div *ngIf="overlayStatus" (click)="changingOverlayStatus()" class="overlay"></div> -->
+  <section class="header grid grid-2-col gap96 pad96">
+    <div *ngIf="menuBar" (click)="closeMenuBar()" class="overlay"></div>
+    <div *ngIf="menuBar" class="menu-bar-barlist flex flex-dir gap16">
+      <a href="#about" class="nav-link">About Us</a>
+      <hr>
+      <a href="#offer" class="nav-link">Our Offerings</a>
+      <hr>
+      <a href="#openning" class="nav-link">Current Openings</a>
+      <hr>
+      <a href="#connect" class="nav-link">Get in touch</a>
+    </div>
+      <div class="content flex flex-dir gap24">
+          <h1 class="primary-heading">Are you finding a <span class="itt" >INTERN,JOB</span>.</h1>
+          <p class="description">Are you hussling for a job, or not getting interns after hundred's of apply. Don't worry you are right place!</p>
+          <!-- <div class="search pad24">
+              <form class="form-search flex flex-align gap16">
+                  <input #inp placeholder="e.g Web developer intern" class="input" type="text" (keyup)="searchJob(inp)">
+                  <span  class="searchBtn">Search!</span> 
+              </form>
+              <div class="search-result opacityAndIndex flex flex-dir gap16">
+                  <a  *ngFor="let output of searchOutcome" href="#" class="searchOut flex flex-align gap08">
+                      <img src="./../../assets/check.png" alt="check" class="check">
+                      <p>{{output}}</p>
+                  </a>
+              </div>
+          </div> -->
+      </div>
+      <div class="image flex flex-1 flex-dir gap16">
+          <div class="text-design-extra flex flex-1 gap08">
+              <p class="text-des">First Brokrege service!</p>
+          </div>
+          <div class="text-design-extra-- flex flex-1 gap08">
+              <p class="text-des">Free resume builder</p>
+          </div>
+          <img src="./../assets/head3.png" class="header-img">
+          <!-- <p class="description des--update">Strugling on finding jobs or interns,<br> congratulations you are on right place! </p> -->
+      </div>
+      <div class="imp-points">
+          <ol class="list flex flex-1 gap48">
+              <li>Jobs and interns of Trending Companies</li>
+              <li>Easy apply with our brokreage</li>
+              <li>Custom resume building</li>
+              <li>Brand new Portfolio builder</li>
+              <li>AI Resume Screening</li>
+          </ol>
+      </div>
+  </section>
+
+  <section id="about" class="aboutus">
+    <div class="aboutus-container grid grid-2-col pad96">
+      <div class="left flex flex-dir gap16">
+        <h2 class="secondary-heading">About Us</h2>
+        <p class="des">TalentLinker is a SAAS platform, suggest recent jobs to job seaker. Apply automatic in companies depend upon user Profile, Portfolio and resume match. Our simple formula <b >"One to Many" </b>.</p>
+        <p class="des">Here <b>One</b> mean User can create Profile, Portfolio and Resume. No worrying for search each and every companies and then applying manually by repeating same steps every time.</p>
+        <p class="des">Here <b>Many</b> mean We (our service) will filter and sort user's profile, Resume with our AI model and apply to each and every companies depend upon user profile match with company requirements. </p>
+        <p class="des">We are currently in developing phase and try to Add new unique user friendly functionaly for version-1 and soon we are try to lauch it.</p>
+      </div>
+      <div class="right">
+        <img src="./../assets/about-us.png" alt="image" class="img img__aboutus">
+      </div>
+      <div class="bottom flex flex-dir gap16">
+        <div class="credentials flex flex-dir gap08">
+          <h3 class="tertiary-heading">Our Vision</h3>
+          <p class="heading-description"> Many Talented people miss job opportunity beacuse they don't get right information on right time of companies. Our vision is to make this whole process simiple.</p>
+        </div>
+
+        <div class="credentials flex flex-dir gap08">
+          <h3 class="tertiary-heading">Our Mission</h3>
+          <p class="heading-description">Our mission is to help people to get jobs and <b>Every Talented person gets a Talented job.</b></p>
+        </div>
+
+        <div class="credentials flex flex-dir gap08">
+          <h3 class="tertiary-heading">Our People</h3>
+          <p class="heading-description">We are targeting all such people whose are eligible and looking for Inter, Jobs in their dream companies.</p>
+        </div>
+
+        <div class="credentials flex flex-dir gap08">
+          <h3 class="tertiary-heading">Our Team</h3>
+          <p class="heading-description">We are AI, Android and Web Developer. Applying all our Energy, skills and knowledge on TalentLinker. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="offer" class="features-section pad96 flex flex-dir gap48">
+    <h1 class="secondary-heading slight__update">What We Are Offering?</h1>
+    <div class="outer flex flex-dir gap48">
+      <div class="offering flex flex-1 gap48">
+        <img src="./../assets/mannual.jpg" class="img--" alt="image">
+        <div class="covers flex flex-dir gap08">
+          <h2 class="secondary-heading slight__update__second">For our Job Seaker</h2>
+          <p class="offering-feature-des">After visiting on our platform first user can create profile and fill all mandatory fields. Now user have multiple option to select such as Resume Build, Portfolio Build , also seach recent jobs. User have option to use Brockrage service.</p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="offering flex flex-1 gap48">
+        <div class="covers flex flex-dir gap08">
+          <h2 class="secondary-heading slight__update__second third__update">Our Brockrage Working</h2>
+          <p class="offering-feature-des third__update">After enabling Brockrage service. We will filter and sort all user profile, Resume, Portfolio by our AI model and applying to all companies whose requirments match. Also we will stay connected with user on updates and user can connect with us using Chatbot Service.</p>
+        </div>
+        <img src="./../assets/brokerage.png" class="img-- img__date" alt="image">
+      </div>
+      <hr>
+      <div class="offering flex flex-1 gap48">
+        <img src="./../assets/recuiter.png" class="img-- " alt="image">
+        <div class="covers flex flex-dir gap08">
+          <h2 class="secondary-heading slight__update__second">For our Recruiter+Companies</h2>
+          <p class="offering-feature-des">Recruiter can filter and sort all aplications based upon their requirement using our AI tools. Without manually reading a resume's, Which is time consuming task. Recruiter can select any no of candidates for next rounds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="openning" class="openings pad96 flex flex-dir gap48">
+    <h1 class="secondary-heading slight__update">We Are Hiring For:</h1>
+    <div class="covered grid grid-3-col gap48">
+      <div class="opening-details pad16 flex flex-dir gap16">
+          <h2 class="secondary-heading slight__update__second">Angular developer</h2>
+        <div class="needs grid grid-3-col gap16">
+            <!-- <p class="need">Benifits</p> -->
+            <p class="need">Stipend - 5K</p>
+            <p class="need">Remote</p>
+            <p class="contact">contact - <span>9478181139</span></p>
+        </div>
+      </div>
+
+      <div class="opening-details pad16 flex flex-dir gap16">
+        <h2 class="secondary-heading slight__update__second">Contant Creater</h2>
+      <div class="needs grid grid-3-col gap16">
+          <!-- <p class="need">Benifits</p> -->
+          <p class="need">Collaboration</p>
+          <p class="need">Remote</p>
+          <p class="contact">contact - <span>9417786265</span></p>
+      </div>
+    </div>
+
+    <div class="opening-details pad16 flex flex-dir gap16">
+      <h2 class="secondary-heading slight__update__second">Animator</h2>
+    <div class="needs grid grid-3-col gap16">
+        <!-- <p class="need">Benifits</p> -->
+        <p class="need">On demand</p>
+        <p class="need">Remote</p>
+        <p class="contact">contact - <span>9478181139</span></p>
+    </div>
+  </div>
+    </div>
+  </section>
+
+  <section class="ourGalary pad96 flex flex-dir gap48">
+    <h1 class="secondary-heading slight__update padd__esential">Our premium <strong>Gallery</strong></h1>
+    <div class="gallery-container grid grid-7-col gap16">
+      <div class="one">
+        <img src="./../assets/res.png" alt="resume img" class="img">
+      </div>
+      <div class="two">
+        <img src="./../assets/login1.png" alt="resume img" class="img">
+
+      </div>
+      <div class="three">
+        <img src="./../assets/pay.png" alt="resume img" class="img">
+
+      </div>
+      <div class="four">
+        <img src="./../assets/port.png" alt="resume img" class="img">
+      </div>
+      <div class="five">
+        <img src="./../assets/profile.png" alt="resume img" class="img">
+
+      </div>
+      <div class="six">
+        <img src="./../assets/myacc1.png" alt="resume img" class="img">
+
+      </div>
+    </div>
+  </section>
+
+  <section id="connect" class="form-contact pad96 flex flex-dir gap48">
+    <h1 class="secondary-heading slight__update padding_esential">Get in touch</h1>
+
+    <form method="POST" data-netlify="true" class="contact-form flex flex-dir gap16">
+      <div class="credential flex flex-dir gap08">
+        <label class="label">Name</label>
+        <input class="input " name="name" placeholder="Name*" type="text" required>
+      </div>
+      <div class="credential flex flex-dir gap08">
+        <label class="label">Email</label>
+        <input class="input" name="email" placeholder="Email*" type="text" required>
+      </div>
+      <div class="credential flex flex-dir gap08">
+        <label class="label">Mobile/Phone</label>
+        <input class="input" name="mobile" placeholder="Mobile/Phone*" type="text" required>
+      </div>
+      <div class="credential flex flex-dir gap08">
+        <label class="label">Subject</label>
+        <input class="input" name="subject" placeholder="Subject*" type="text" required>
+      </div>
+      <div class="credential flex flex-dir gap08">
+        <label class="label">Your Message</label>
+        <textarea class="input" name="message" rows="10"></textarea>
+      </div>
+      <div class="credential flex flex-dir gap08">
+        <button class="submit" type="submit">Submit</button>
+      </div>
+    </form>
+  </section>
+
+  <footer class="footer pad96">
+    <div class="foot grid grid-4-col">
+      <div class="left-foot flex flex-dir gap16">
+        <div class="coveing flex flex-1 flex-align gap16">
+          <img src="./../assets/logo4.png" class="logo---- logo" alt="logo" >
+          <img src="./../assets/name4.png" class=" logo logo--" alt="logo" >
+        </div>
+        <p class="uotte">We makes easy, because we know!</p>
+      </div>
+      <div class="centre-foot flex flex-1 flex-dir gap16">
+        <h4 class="fouth-heading">About Us</h4>
+        <ul class="flex flex-dir gap16">
+          <li><a href="#about" class="navigate">About us</a></li>
+          <li><a href="#offer" class="navigate">Our offerings</a></li>
+          <li><a href="#openning" class="navigate">Opennings we have</a></li>
+          <li><a href="#connect" class="navigate">Communicate with us</a></li>
+        </ul>
+      </div>
+      <div class="right-foot">
+        <video width="100%" height="100%" controls>
+          <source src="./../assets/demoVideo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <p class="copyright">Copyright &copy; claim by TalentLinker</p>
+  </footer>
+
+</main>
+

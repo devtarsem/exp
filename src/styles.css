@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.flex{
+    display: flex;
+}
+.flex-1{
+    align-items: center;
+    justify-content: center;
+}
+.flex-2{
+    align-items: center;
+    justify-content: space-between;
+}
+.flex-3{
+    align-items: center;
+    justify-content: space-around;
+}
+.flex-align{
+    align-items: center;
+}
+.flex-dir{
+    flex-direction: column;
+}
+.grid{
+    display: grid;
+}
+.grid-1-col{
+    grid-template-columns: repeat(1,1fr);
+}
+.grid-2-col{
+    grid-template-columns: repeat(2,1fr);
+}
+.grid-3-col{
+    grid-template-columns: repeat(3,1fr);
+}
+.grid-4-col{
+    grid-template-columns: repeat(4,1fr);
+}
+.grid-5-col{
+    grid-template-columns: repeat(5,1fr);
+}
+.grid-6-col{
+    grid-template-columns: repeat(6,1fr);
+}
+.grid-7-col{
+    grid-template-columns: repeat(7,1fr);
+}
+.grid-8-col{
+    grid-template-columns: repeat(8,1fr);
+}
+.grid-9-col{
+    grid-template-columns: repeat(9,1fr);
+}
+.grid-10-col{
+    grid-template-columns: repeat(10,1fr);
+}
+
+.gap08{
+    gap: 0.8rem;
+}
+.gap16{
+    gap: 1.6rem;
+}
+.gap24{
+    gap: 2.4rem;
+}
+.gap32{
+    gap: 3.2rem;
+}
+.gap48{
+    gap: 4.8rem;
+}
+.gap64{
+    gap: 6.4rem;
+}
+.gap72{
+    gap: 7.2rem;
+}
+.gap96{
+    gap: 9.6rem;
+}
+
+.pad08{
+    padding: 0.8rem;
+}
+.pad16{
+    padding: 1.6rem;
+}
+.pad24{
+    padding: 2.4rem;
+}
+.pad32{
+    padding: 3.2rem;
+}
+.pad48{
+    padding: 4.8rem;
+}
+.pad64{
+    padding: 6.4rem;
+}
+.pad72{
+    padding: 7.2rem;
+}
+.pad96{
+    padding: 9.6rem;
+}
+
+:root{
+    --color-one : #1e1950;
+    --color-two :#F3F1FF;
+    --color-three : #FF6B2C;
+    --color-four : #24B0D3;
+    --color-five : #FFD701;
+    --color-six : #7521FF;
+    --color-seven : #4CD7FF;
+    --color-eight : #2C00D5;
+    --color-nine : #F2CFEF;
+}
